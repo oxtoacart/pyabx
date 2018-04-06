@@ -58,6 +58,10 @@ relay_states = {
 }
 x = 'a'
 
+random_states = []
+for i in xrange(50):
+    random_states.append([bool(random.getrandbits(1)), bool(random.getrandbits(1))])
+
 # See https://en.wikipedia.org/wiki/ABX_test#Confidence
 meaningful_at = {
     10: 9,
@@ -112,14 +116,12 @@ with BitBangDevice(device_id) as bb:
     screen.addstr(3, 0, '   q       -> quit')
 
     def switch_to(source):
-        global extra_state
-
-        states = relay_states[source]
-        # add a toggle on the 3rd and 4th relays to keep consistent switching
-        # noise to avoid bias
-        for i in range(2, 4):
-            states[i] = not states[i]
-        rls.set(states)
+        # throw in some random switching to keep user from guess based on relay
+        # noise
+        for states in random_states:
+            rls.set(states)
+            time.sleep(0.001) # need to sleep a bit for relay to have a chance to actually switch
+        rls.set(relay_states[source])
         screen.addstr(7, 0, 'Listening to %s' % source_names[source].ljust(30))
         screen.addstr(8, 0, '' if trials >= 10 else 'too few trials to be meaningful, please run at least 10 trials')
 
