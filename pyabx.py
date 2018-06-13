@@ -54,7 +54,7 @@ source_names = {
 
 relay_states = {
     'a': [False, False, False, False],
-    'b': [True, True, False, False],
+    'b': [True, True, False, True],
 }
 x = 'a'
 

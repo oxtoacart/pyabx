@@ -4,7 +4,7 @@ It is designed to treat two male 3.5mm TRS connectors as inputs A and B (e.g.
 connecting to two different amps), and output to a 3.5mm female TRS
 jack (e.g. headphones).
 
-![ABX Tester](https://i.imgur.com/4bAHfV4.jpg)
+![ABX Tester]
 
 ## Hardware Build Instructions
 ### Required Parts
@@ -18,13 +18,14 @@ Total cost about $50, but with plenty of left over connectors and wire.
 
 ### Wiring
 
-- Wire ground from both male connectors to female connector
 - Wire right channel of A cable to off (normally closed) terminal of relay 1
 - Wire right channel of B cable to on (normally open) terminal of relay 1
 - Wire left channel of A cable to off (normally closed) terminal of relay 2
 - Wire left channel of B cable to on (normally open) terminal of relay 2
 - Wire right channel of female output cable to common terminal of relay 1
 - Wire left channel of female output cable to common terminal of relay 1
+- Wire ground of A cable to off (normally closed) terminal of relay 3
+- Wire ground of B cable to on (normally open) terminal of relay 3
 
 ## Command Line
 
